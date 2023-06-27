@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.mobile.app</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="website.res_config_settings_view_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//div[@data-key='website']/div[1]" position="after" >
+                    <h2>Mobile App</h2>
+                    <div class="row mt16 o_settings_container" id="mobile_app_settings">
+
+                        <div class="col-xs-12 col-lg-6 o_setting_box" id="mobile_app_config" title="Configuration would be applied to the Mobile App.">
+                        <div class="o_setting_left_pane"/>
+                          <div class="o_setting_right_pane">
+                              <span class="o_form_label">Mobile App App</span>
+                              <div class="text-muted">
+                                  Configure Mobile App app
+                              </div>
+                              <div class="content-group" title="This configuration will be used to provide commission for a delivery.">
+                                  <div class="mt16">
+                                      <button type="object" name="open_mobile_app_conf" string="Configuration" class="oe_link btn-link" icon="fa-gears"/>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+
+                      <div class="col-12 col-lg-6 o_setting_box" title="Auto validate the picking on delivery.">
+                                <div class="o_setting_left_pane">
+                                    <field name="auto_validate"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="auto_validate"/>
+                                    <div class="text-muted">
+                                        Auto validate the picking on delivery
+                                    </div>
+                                </div>
+                            </div>
+
+                      <div class="col-12 col-lg-6 o_setting_box" title="Automatically create invoice of picking when delivered.">
+                                <div class="o_setting_left_pane">
+                                    <field name="auto_invoice"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="auto_invoice"/>
+                                    <div class="text-muted">
+                                        Automatically create invoice of picking when delivered
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        <div class="col-12 col-lg-6 o_setting_box" title="An email would be send to the customer with Mobile App picking delivery token">
+                                  <div class="o_setting_left_pane">
+                                      <field name='db_config_id' invisible="1"/>
+                                      <field name="verify_token"/>
+                                  </div>
+                                  <div class="o_setting_right_pane">
+                                      <label for="verify_token"/>
+                                      <div class="text-muted">
+                                          An email would be send to the customer with delivery token for the responsible picking of Mobile App
+                                      </div>
+                                      <div class="content-group"  attrs="{'invisible': [('verify_token', '=', False)]}">
+                                        <div class="row mt16" id="mobile_token_mail_temp_id">
+                                            <label for="mobile_token_mail_temp_id" string="Email Template" class="col-lg-3 o_light_label"/>
+                                            <field name="mobile_token_mail_temp_id" readonly="1"/>
+                                        </div>
+                                      </div>
+                                  </div>
+                              </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

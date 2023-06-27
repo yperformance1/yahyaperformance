@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="mobile_app_config_view_form" model="ir.ui.view">
+        <field name="name">mobile.app.config.form</field>
+        <field name="model">mobile.app.config</field>
+        <field name="arch" type="xml">
+            <form string="Mobile App Configuration" create="false" delete="false">
+                <sheet>
+                    <div class="oe_title">
+                        <div class="oe_edit_only">
+                            <label for="name" string="Title"/>
+                        </div>
+                        <h1>
+                            <field name="name" default_focus="1" placeholder="Name"/>
+                        </h1>
+                    </div>
+                <notebook>
+                    <page string="Credentials">
+                        <group string="Mobile App API Configuration">
+                            <field name="api_key"/>
+                        </group>
+                        <group string="Android/IOS Push Notification Credentials">
+                            <field name="fcm_api_key"/>
+                        </group>
+                    </page>
+                    <page string="Advanced">
+                        <group>
+                            <!-- <group string="Currency">
+                                <field name="pricelist_id" required="1"/>
+                                <field name="currency_id"/>
+                            </group> -->
+                            <group string="Language">
+                                <label for="language_ids"/>
+                                <div name="language_ids">
+                                    <div>
+                                        <div name="language_ids" class="oe_inline">
+                                            <field name="language_ids" widget="many2many_checkboxes"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <field name="default_lang" widget="selection" required="1"/>
+                                <!-- <field name="website_id" widget="selection" required="1"/> -->
+                            </group>
+                            <!-- <group string="Mobikul Countries">
+                                <field name="country_ids" widget="many2many_tags"/>
+                            </group> -->
+                            <!-- <group string="Orders">
+                                <field name="salesperson_id"/>
+                                <field name="salesteam_id"/>
+                                <field name="order_mail_template"/>
+                            </group> -->
+                            <group string="Mobile App Extra Features">
+                                <field name="db_reset_password"/>
+                                <field name="show_banner"/>
+                                <field name="verify_token"/>
+                                <!-- <field name="color_scheme" string="Choose Combination"/> -->
+                             </group>
+                        </group>
+                    </page>
+                    <!-- <page string="Extra Configuration">
+                        <group string="On Signup Terms and Conditions">
+                          <field name="enable_term_and_condition"/>
+                          <field name="signup_terms_and_condition" attrs="{'invisible': [('enable_term_and_condition', '=', False)]}" />
+                        </group>
+                        <group string="On Payment Terms and Conditions">
+                          <field name="payment_short_terms" />
+                          <field name="payment_long_terms" />
+                        </group>
+                    </page> -->
+                </notebook>
+                </sheet>
+                <div style="text-align: center;">
+                    <div class="oe_edit_only" attrs="{'invisible': [('db_banner', '=', False)]}">
+                        <h1>Change Banner Image</h1>
+                    </div>
+                    <div class="oe_edit_only" attrs="{'invisible': [('db_banner', '!=', False)]}">
+                        <h1>Upload Banner Image</h1>
+                    </div>
+                    <field name="db_banner" widget="image" colspan="4"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <menuitem id="mobile_app_menu" name="Mobile App"
+              web_icon="mobile_app,static/description/icon.png"/>
+</odoo>
